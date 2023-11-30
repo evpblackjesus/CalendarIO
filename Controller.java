@@ -9,29 +9,49 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-
 public class Controller extends year {
 
-    int monthCounter = 0;
+    protected int monthCounter = 0;
 
     @FXML
-    private Button monthView;
+    protected Button jan;
 
     @FXML
-    private Button weekView;
+    protected Button feb;
 
     @FXML
-    private Button yearView;
+    protected Button mar;
 
     @FXML
-    private TableView<?> table;
+    protected Button apr;
+
+    @FXML
+    protected Button maj;
+
+    @FXML
+    protected Button jun;
+
+    @FXML
+    protected Button home;
+
+    @FXML
+    protected Button monthView;
+
+    @FXML
+    protected Button weekView;
+
+    @FXML
+    protected Button yearView;
+
+    @FXML
+    protected TableView<?> table;
 
 
     @FXML
     void showMonth(ActionEvent event) throws IOException {
         Stage window = (Stage) monthView.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("monthView.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1000,600);
             window.setScene(scene);
             window.show();
     }
@@ -40,7 +60,7 @@ public class Controller extends year {
     void showWeek(ActionEvent event) throws IOException {
         Stage window = (Stage) monthView.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("weekView.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1000,600);
             window.setScene(scene);
             window.show();
     }
@@ -49,7 +69,16 @@ public class Controller extends year {
     void showYear(ActionEvent event) throws IOException {
         Stage window = (Stage) monthView.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("yearView.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1000,600);
+            window.setScene(scene);
+            window.show();
+    }
+
+    @FXML
+    void homepage(ActionEvent event) throws IOException{
+        Stage window = (Stage) monthView.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("mainscene.fxml"));
+            Scene scene = new Scene(root, 1000,600);
             window.setScene(scene);
             window.show();
     }
@@ -57,15 +86,8 @@ public class Controller extends year {
     @FXML
     void jumpnext(ActionEvent event) throws IOException {
         monthCounter++;
-    
-        if(monthCounter > 11){
-            monthCounter = 11;
-
-        }
-        else if (monthCounter < 0){
-            monthCounter = 0;
-        }
-
+        if(monthCounter > 11) monthCounter = 11;
+        else if (monthCounter < 0) monthCounter = 0;
         Scene scene = (Scene) monthView.getScene();
         Label label = (Label) scene.lookup("#monthname");
         label.setText(monthName[monthCounter]);
@@ -74,16 +96,24 @@ public class Controller extends year {
     @FXML
     void stepback(ActionEvent event){
         monthCounter--;
-
-        if(monthCounter > 11){
-            monthCounter = 11;
-        }
-        else if (monthCounter < 0){
-            monthCounter = 0;
-        }
-
+        if(monthCounter > 11) monthCounter = 11;
+        else if (monthCounter < 0) monthCounter = 0;
         Scene scene = (Scene) monthView.getScene();
         Label label = (Label) scene.lookup("#monthname");
         label.setText(monthName[monthCounter]);
+    }
+
+    @FXML
+    void show(ActionEvent event) throws IOException{
+        String name = ((Button) event.getSource()).getId();
+        int index = 0;
+        while (!name.equals(monthNameShort[index])) index++;
+        Stage window = (Stage) monthView.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("monthView.fxml"));
+            Scene scene = new Scene(root, 1000,600);
+            window.setScene(scene);
+            window.show();
+        Label label = (Label) scene.lookup("#monthname");
+        label.setText(monthName[index]);
     }
 }

@@ -19,10 +19,11 @@ public class Main extends Application{
         window = primaryStage;
 
         Parent root = FXMLLoader.load(getClass().getResource("mainscene.fxml"));
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 1000,600);
 
         window.setTitle("CalendarIO");
         window.setScene(scene);
+        window.setResizable(false);
         window.show();
 
 

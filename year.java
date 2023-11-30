@@ -57,4 +57,20 @@ public class year {
         7
     };
 
+    //éves nézetből való ugráláshoz kell
+    String[] monthNameShort = new String[]{
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "maj",
+        "jun",
+        "jul",
+        "aug",
+        "szep",
+        "okt",
+        "nov",
+        "dec",
+    };
+
 }

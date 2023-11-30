@@ -4,10 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <StackPane prefHeight="57.0" prefWidth="819.0" style="-fx-background-color: #373737;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -20,13 +22,14 @@
       </StackPane>
       <StackPane layoutX="0.8" layoutY="59.2" prefHeight="509.0" prefWidth="819.0" style="-fx-background-color: #373737;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="59.0">
          <children>
-            <SplitPane dividerPositions="0.25464774951076313" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #373737;" StackPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.28767123287671226" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #373737;" StackPane.alignment="CENTER">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="123.0" style="-fx-background-color: #373737;">
+                <AnchorPane maxHeight="508.0" maxWidth="200.0" minHeight="508.0" minWidth="200.0" prefHeight="508.0" prefWidth="200.0" style="-fx-background-color: #373737;">
                      <children>
                         <Button fx:id="yearView" alignment="TOP_CENTER" contentDisplay="CENTER" disable="true" layoutX="12.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showYear" prefHeight="26.0" prefWidth="77.0" text="Éves nézet" textAlignment="CENTER" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.200000000000003" />
                         <Button fx:id="monthView" contentDisplay="CENTER" layoutX="11.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showMonth" prefHeight="26.0" prefWidth="77.0" text="Havi nézet" textAlignment="CENTER" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.200000000000003" />
                         <Button fx:id="weekView" contentDisplay="CENTER" layoutX="11.0" layoutY="128.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showWeek" prefHeight="26.0" prefWidth="77.0" text="Heti nézet" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.200000000000003" />
+                        <Button fx:id="home" layoutX="12.0" layoutY="467.0" maxHeight="26.0" maxWidth="177.0" minHeight="26.0" minWidth="172.0" mnemonicParsing="false" onAction="#homepage" prefHeight="26.0" prefWidth="177.0" text="Vissza a főoldalra" AnchorPane.bottomAnchor="14.600000000000023" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.199999999999989" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="713.0" style="-fx-background-color: #373737;">
@@ -40,7 +43,82 @@
                               </Label>
                            </children>
                         </StackPane>
-                     </children></AnchorPane>
+                        <VBox layoutY="70.0" prefHeight="432.0" prefWidth="612.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <HBox prefHeight="144.0" prefWidth="800.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="jan" alignment="CENTER" mnemonicParsing="false" onAction="#show" prefHeight="54.0" prefWidth="86.0" text="Január" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="feb" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Február" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="mar" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Március" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="145.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="apr" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Április" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="144.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="maj" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Május" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="jun" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Június" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="jul" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Július" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="aug" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Augusztus" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                 </children></HBox>
+                              <HBox prefHeight="144.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="szep" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Szeptember" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="okt" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Október" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="nov" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="November" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="dec" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="December" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                 </children></HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
               </items>
             </SplitPane>
          </children>

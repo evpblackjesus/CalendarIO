@@ -22,11 +22,12 @@
          <children>
             <SplitPane dividerPositions="0.24730919765166334" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #373737;" StackPane.alignment="CENTER">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="123.0" style="-fx-background-color: #373737;">
+                <AnchorPane maxHeight="508.0" maxWidth="200.0" minHeight="508.0" minWidth="200.0" prefHeight="508.0" prefWidth="200.0" style="-fx-background-color: #373737;">
                      <children>
                         <Button fx:id="yearView" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showYear" prefHeight="26.0" prefWidth="77.0" text="Éves nézet" textAlignment="CENTER" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.200000000000003" />
                         <Button fx:id="monthView" contentDisplay="CENTER" layoutX="11.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showMonth" prefHeight="26.0" prefWidth="77.0" text="Havi nézet" textAlignment="CENTER" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.200000000000003" />
                         <Button fx:id="weekView" contentDisplay="CENTER" disable="true" layoutX="11.0" layoutY="128.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showWeek" prefHeight="26.0" prefWidth="77.0" text="Heti nézet" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.200000000000003" />
+                        <Button fx:id="home" layoutX="12.0" layoutY="467.0" maxHeight="26.0" maxWidth="177.0" minHeight="26.0" minWidth="172.0" mnemonicParsing="false" onAction="#homepage" prefHeight="26.0" prefWidth="177.0" text="Vissza a főoldalra" AnchorPane.bottomAnchor="14.600000000000023" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.199999999999989" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="713.0" style="-fx-background-color: #373737;" />
