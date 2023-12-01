@@ -6,4 +6,6 @@ module io.blackjesus.calendario.calendario {
 
     opens io.blackjesus.calendario to javafx.fxml;
     exports io.blackjesus.calendario;
+    exports io.blackjesus.calendario.controllers;
+    opens io.blackjesus.calendario.controllers to javafx.fxml;
 }

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="io.blackjesus.calendario.controllers.YearViewController"
+            prefHeight="400.0" prefWidth="600.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="713.0" style="-fx-background-color: #373737;">
+        <children>
+            <StackPane prefHeight="70.0" prefWidth="606.0" AnchorPane.bottomAnchor="436.79999999999995" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                    <Label text="2024" textFill="WHITE">
+                    </Label>
+                </children>
+            </StackPane>
+            <VBox layoutY="70.0" prefHeight="432.0" prefWidth="612.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <children>
+                    <HBox prefHeight="144.0" prefWidth="800.0">
+                        <children>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="jan" alignment="CENTER" mnemonicParsing="false" onAction="#show" prefHeight="54.0" prefWidth="86.0" text="Január" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="feb" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Február" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="mar" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Március" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="145.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="apr" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Április" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                        </children>
+                    </HBox>
+                    <HBox prefHeight="144.0" prefWidth="200.0">
+                        <children>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="maj" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Május" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="jun" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Június" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="jul" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Július" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="aug" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Augusztus" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                        </children></HBox>
+                    <HBox prefHeight="144.0" prefWidth="200.0">
+                        <children>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="szep" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Szeptember" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="okt" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="Október" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="nov" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="November" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="144.0" prefWidth="200.0">
+                                <children>
+                                    <Button fx:id="dec" onAction="#show" alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="86.0" text="December" textAlignment="CENTER" />
+                                </children>
+                            </VBox>
+                        </children></HBox>
+                </children>
+            </VBox>
+        </children>
+    </AnchorPane>
+
+</AnchorPane>
