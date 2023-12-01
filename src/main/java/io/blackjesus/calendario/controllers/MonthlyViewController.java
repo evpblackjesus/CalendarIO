@@ -106,18 +106,29 @@ public class MonthlyViewController implements Initializable {
         monthlyViewGrid.getChildren().clear();
         int[][] calendarMatrix = new int[6][7];
         fillCalendar(calendarMatrix, currentYear, currentMonth);
+        boolean renderingCurrentMonth = false;
         for(int i = 0; i < calendarMatrix.length; i++) {
             int[] row = calendarMatrix[i];
             for (int j = 0; j < row.length; j++) {
                 int day = row[j];
+                if(day == 1) {
+                    renderingCurrentMonth = !renderingCurrentMonth;
+                }
                 if (day != 0) { // Ellenőrizzük, hogy a nap létezik-e (nem null)
-                    Node node = PageManager.loadFxml("day", param -> new DayController(currentYear, currentMonth, day));
+                    boolean finalRenderingCurrentMonth = renderingCurrentMonth;
+                    Node node = PageManager.loadFxml("day", param -> new DayController(currentYear, currentMonth, day, finalRenderingCurrentMonth));
                     monthlyViewGrid.add(node, j, i);
                 }
             }
         }
     }
 
+    /**
+     * Feltölti a paraméterben megkapott 6*7-es mátrixot a hónap napjaival
+     * @param matrix
+     * @param year
+     * @param month
+     */
     public void fillCalendar(int[][] matrix, int year, int month) {
         LocalDate currentDate = LocalDate.of(year, month, 1);
 
