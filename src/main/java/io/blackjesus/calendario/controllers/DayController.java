@@ -1,5 +1,6 @@
 package io.blackjesus.calendario.controllers;
 
+import io.blackjesus.calendario.models.DayStyling;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -12,11 +13,13 @@ import java.util.ResourceBundle;
 public class DayController implements Initializable {
     private int year, month, dayOfMonth;
     private boolean renderAsCurrentMonth;
-    public DayController(int year, int month, int dayOfMonth, boolean renderAsCurrentMonth) {
+    private DayStyling style;
+    public DayController(int year, int month, int dayOfMonth, boolean renderAsCurrentMonth, DayStyling styling) {
         this.year = year;
         this.month = month;
         this.dayOfMonth = dayOfMonth;
         this.renderAsCurrentMonth = renderAsCurrentMonth;
+        this.style = styling;
     }
     @FXML
     private Label dayOfMonthLabel;
@@ -33,10 +36,18 @@ public class DayController implements Initializable {
         if(!renderAsCurrentMonth) {
             dayOfMonthLabel.setTextFill(Color.GRAY);
             Border border = new Border(new BorderStroke(
-                    Color.RED,
+                    Color.GRAY,
                     BorderStrokeStyle.SOLID,
                     CornerRadii.EMPTY,
-                    BorderStroke.THIN
+                    style.getBorderWidths()
+            ));
+            container.setBorder(border);
+        } else {
+            Border border = new Border(new BorderStroke(
+                    Color.BLACK,
+                    BorderStrokeStyle.SOLID,
+                    CornerRadii.EMPTY,
+                    style.getBorderWidths()
             ));
             container.setBorder(border);
         }

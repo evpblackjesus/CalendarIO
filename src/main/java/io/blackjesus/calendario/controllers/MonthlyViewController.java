@@ -1,6 +1,7 @@
 package io.blackjesus.calendario.controllers;
 
 import io.blackjesus.calendario.PageManager;
+import io.blackjesus.calendario.models.DayStyling;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -116,7 +117,10 @@ public class MonthlyViewController implements Initializable {
                 }
                 if (day != 0) { // Ellenőrizzük, hogy a nap létezik-e (nem null)
                     boolean finalRenderingCurrentMonth = renderingCurrentMonth;
-                    Node node = PageManager.loadFxml("day", param -> new DayController(currentYear, currentMonth, day, finalRenderingCurrentMonth));
+                    DayStyling dayStyling = new DayStyling();
+                    dayStyling.setTopRow(i == 0);
+                    dayStyling.setLastColumn(j == row.length - 1);
+                    Node node = PageManager.loadFxml("day", param -> new DayController(currentYear, currentMonth, day, finalRenderingCurrentMonth, dayStyling));
                     monthlyViewGrid.add(node, j, i);
                 }
             }

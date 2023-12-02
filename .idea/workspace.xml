@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ac3906a-d75b-4095-93ca-be0fb5e79ba9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/models/DayStyling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/DayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/DayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/MonthlyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/MonthlyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/day.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/day.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/monthly-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/monthly-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
