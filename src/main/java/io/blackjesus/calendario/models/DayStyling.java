@@ -3,7 +3,7 @@ package io.blackjesus.calendario.models;
 import javafx.scene.layout.BorderWidths;
 
 public class DayStyling {
-    private boolean isTopRow, isFirstColumn, isLastColumn, isBottomRow;
+    private boolean isTopRow, isFirstColumn, isLastColumn, isBottomRow, isToday;
 
     public DayStyling() {}
 
@@ -52,5 +52,13 @@ public class DayStyling {
 
     public void setBottomRow(boolean bottomRow) {
         isBottomRow = bottomRow;
+    }
+
+    public boolean isToday() {
+        return isToday;
+    }
+
+    public void setToday(boolean today) {
+        isToday = today;
     }
 }
