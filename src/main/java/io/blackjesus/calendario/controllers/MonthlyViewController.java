@@ -1,16 +1,12 @@
 package io.blackjesus.calendario.controllers;
 
-import io.blackjesus.calendario.PageManager;
+import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.DayStyling;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.time.DayOfWeek;
@@ -36,7 +32,7 @@ public class MonthlyViewController implements Initializable {
             return;
         }
         currentYear = year;
-        currentYearLabel.setText(String.valueOf(year));
+        updateViewLabel();
         updateCalendar();
     }
 
@@ -58,7 +54,7 @@ public class MonthlyViewController implements Initializable {
             return;
         }
         currentMonth = month;
-        currentMonthLabel.setText(Month.of(month).getDisplayName(TextStyle.FULL, Locale.of("hu")));
+        updateViewLabel();
         updateCalendar();
     }
 
@@ -75,20 +71,7 @@ public class MonthlyViewController implements Initializable {
     private GridPane monthlyViewGrid;
 
     @FXML
-    private Label currentYearLabel;
-
-    @FXML
-    private Label currentMonthLabel;
-
-    @FXML
-    private void onNextYearClick() {
-        setCurrentYear(currentYear + 1);
-    }
-
-    @FXML
-    private void onPrevYearClick() {
-        setCurrentYear(currentYear - 1);
-    }
+    private Label currentViewLabel;
 
     @FXML
     private void onNextMonthClick() {
@@ -100,27 +83,33 @@ public class MonthlyViewController implements Initializable {
         setCurrentMonth(currentMonth - 1);
     }
 
+    private void updateViewLabel() {
+        currentViewLabel.setText(currentYear + ". " + Month.of(currentMonth).getDisplayName(TextStyle.FULL, Locale.of("hu")));
+    }
+
     /**
      * Frissíti a GUI-t az éppen aktuális értékek alapján
      */
     private void updateCalendar() {
         monthlyViewGrid.getChildren().clear();
-        int[][] calendarMatrix = new int[6][7];
+        LocalDate[][] calendarMatrix = new LocalDate[6][7];
         fillCalendar(calendarMatrix, currentYear, currentMonth);
+
         boolean renderingCurrentMonth = false;
-        for(int i = 0; i < calendarMatrix.length; i++) {
-            int[] row = calendarMatrix[i];
+        for (int i = 0; i < calendarMatrix.length; i++) {
+            LocalDate[] row = calendarMatrix[i];
             for (int j = 0; j < row.length; j++) {
-                int day = row[j];
-                if(day == 1) {
+                LocalDate date = row[j];
+                if (date != null && date.getDayOfMonth() == 1) {
                     renderingCurrentMonth = !renderingCurrentMonth;
                 }
-                if (day != 0) { // Ellenőrizzük, hogy a nap létezik-e (nem null)
+                if (date != null) {
                     boolean finalRenderingCurrentMonth = renderingCurrentMonth;
                     DayStyling dayStyling = new DayStyling();
                     dayStyling.setTopRow(i == 0);
                     dayStyling.setLastColumn(j == row.length - 1);
-                    Node node = PageManager.loadFxml("day", param -> new DayController(currentYear, currentMonth, day, finalRenderingCurrentMonth, dayStyling));
+                    dayStyling.setToday(date.isEqual(LocalDate.now()));
+                    Node node = PageManager.loadFxml("day", param -> new DayController(date, finalRenderingCurrentMonth, dayStyling));
                     monthlyViewGrid.add(node, j, i);
                 }
             }
@@ -133,7 +122,7 @@ public class MonthlyViewController implements Initializable {
      * @param year
      * @param month
      */
-    public void fillCalendar(int[][] matrix, int year, int month) {
+    public static void fillCalendar(LocalDate[][] matrix, int year, int month) {
         LocalDate currentDate = LocalDate.of(year, month, 1);
 
         // Előző hónap napjai
@@ -142,13 +131,13 @@ public class MonthlyViewController implements Initializable {
         int currentRow = 0;
         int prevMonthDay = prevMonthLastDay - currentDate.getDayOfWeek().getValue() + 2;
         for (int day = 1; day <= currentDate.getDayOfWeek().getValue(); day++) {
-            matrix[currentRow][day - 1] = prevMonthDay;
+            matrix[currentRow][day - 1] = prevMonth.plusDays(prevMonthDay - 1);
             prevMonthDay++;
         }
 
         // Aktuális hónap napjai
         while (currentDate.getMonthValue() == month) {
-            matrix[currentRow][currentDate.getDayOfWeek().getValue() - 1] = currentDate.getDayOfMonth();
+            matrix[currentRow][currentDate.getDayOfWeek().getValue() - 1] = currentDate;
             currentDate = currentDate.plusDays(1);
             if (currentDate.getDayOfWeek() == DayOfWeek.MONDAY) {
                 currentRow++;
@@ -156,11 +145,9 @@ public class MonthlyViewController implements Initializable {
         }
 
         // Következő hónap napjai
-        int nextMonthDay = 1;
         while (currentRow < matrix.length) {
-            matrix[currentRow][currentDate.getDayOfWeek().getValue() - 1] = nextMonthDay;
+            matrix[currentRow][currentDate.getDayOfWeek().getValue() - 1] = currentDate;
             currentDate = currentDate.plusDays(1);
-            nextMonthDay++;
             if (currentDate.getDayOfWeek() == DayOfWeek.MONDAY) {
                 currentRow++;
             }
@@ -172,8 +159,7 @@ public class MonthlyViewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        currentMonthLabel.setText(Month.of(currentMonth).getDisplayName(TextStyle.FULL, Locale.of("hu")));
-        currentYearLabel.setText(String.valueOf(currentYear));
+        updateViewLabel();
         updateCalendar();
     }
 }

@@ -1,5 +1,6 @@
-package io.blackjesus.calendario;
+package io.blackjesus.calendario.managers;
 
+import io.blackjesus.calendario.HelloApplication;
 import io.blackjesus.calendario.controllers.DayController;
 import io.blackjesus.calendario.controllers.MainViewController;
 import javafx.fxml.FXMLLoader;

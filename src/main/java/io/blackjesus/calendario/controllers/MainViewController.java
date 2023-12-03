@@ -1,6 +1,6 @@
 package io.blackjesus.calendario.controllers;
 
-import io.blackjesus.calendario.PageManager;
+import io.blackjesus.calendario.managers.PageManager;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

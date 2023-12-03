@@ -1,6 +1,6 @@
 package io.blackjesus.calendario.controllers;
 
-import io.blackjesus.calendario.PageManager;
+import io.blackjesus.calendario.managers.PageManager;
 import javafx.event.ActionEvent;
 
 public class YearViewController {
