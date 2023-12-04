@@ -1,10 +1,15 @@
 package io.blackjesus.calendario.controllers;
 
+import io.blackjesus.calendario.enums.CalendarEventType;
 import io.blackjesus.calendario.managers.PageManager;
+import io.blackjesus.calendario.managers.EventManager;
+import io.blackjesus.calendario.models.CalendarEvent;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -34,6 +39,9 @@ public class MainViewController implements Initializable {
     private VBox eventsbox;
     @FXML
     private CheckBox checkBox;
+    public DayController dayController;
+    @FXML
+    public DatePicker datepicker;
 
     /**
      * Átváltja az oldalt a paraméterben átadott Node-ra
@@ -71,11 +79,18 @@ public class MainViewController implements Initializable {
     @FXML
     private void onEventAddClick() {
         String eventName = eventstext.getText();
-        LocalDate eventDate = LocalDate.now();
+        LocalDate eventDate = datepicker.getValue();
         if (!eventName.isEmpty()) {
             CheckBox checkBox = new CheckBox();
             Label eventLabel = new Label(eventName);
             Label eventDateLabel = new Label(eventDate.toString());
+
+            //Event hozzáadása naptárhoz
+            CalendarEvent newEvent = new CalendarEvent(eventName, eventDate, CalendarEventType.EVENT, false);
+            EventManager.events.add(newEvent);
+
+
+
 
 
             HBox eventHBox = new HBox(checkBox, eventLabel);

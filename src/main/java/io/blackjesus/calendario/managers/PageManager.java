@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 public class PageManager {
@@ -20,6 +21,11 @@ public class PageManager {
     public static void switchPage(String pageName) {
         if(mainViewController != null) {
             mainViewController.switchContent(pages.get(pageName));
+        }
+    }
+    public static void setDatePickerDate (LocalDate date){
+        if(mainViewController != null) {
+            mainViewController.datepicker.setValue(date);
         }
     }
 
