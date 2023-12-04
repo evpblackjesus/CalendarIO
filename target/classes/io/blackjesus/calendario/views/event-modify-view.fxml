@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="664.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.EventModifyViewController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="598.0" prefWidth="117.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onCancelClick" text="&lt;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </VBox>
+      <VBox prefHeight="598.0" prefWidth="651.0" spacing="16.0">
+      <children>
+         <TextField fx:id="titleTxf" promptText="Esemény címe" />
+         <DatePicker fx:id="dateDp" promptText="Esemény dátuma" />
+         <TextField fx:id="locationTxf" promptText="Hely" />
+         <CheckBox fx:id="reminderChb" mnemonicParsing="false" text="Emlékezetető küldése" />
+         <TextArea fx:id="descriptionTxa" prefHeight="200.0" prefWidth="200.0" promptText="Leírás..." />
+            <HBox alignment="TOP_CENTER" prefHeight="21.0" prefWidth="584.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onSaveClick" prefHeight="25.0" prefWidth="200.0" text="Mentés">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button mnemonicParsing="false" onAction="#onCancelClick" prefHeight="25.0" prefWidth="200.0" text="Mégse">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </HBox>
+      </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="5.0" right="20.0" top="20.0" />
+   </padding>
+</HBox>

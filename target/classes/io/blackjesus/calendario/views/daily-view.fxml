@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="245.0" prefWidth="396.0" style="-fx-border-color: red;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.DailyViewController">
+   <children>
+      <DatePicker layoutX="14.0" layoutY="59.0" prefHeight="113.0" prefWidth="222.0" />
+   </children>
+</AnchorPane>

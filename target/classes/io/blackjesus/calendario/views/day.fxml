@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="container" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="94.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.DayController">
+   <children>
+      <VBox fx:id="dayOfMonthContainer" alignment="CENTER" prefHeight="92.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="dayOfMonthLabel" text="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets top="3.0" />
+         </VBox.margin>
+      </VBox>
+      <VBox fx:id="eventsContainer" prefHeight="357.0" prefWidth="600.0" spacing="3.0">
+         <VBox.margin>
+            <Insets left="2.0" right="3.0" />
+         </VBox.margin>
+         <padding>
+            <Insets top="2.0" />
+         </padding></VBox>
+   </children>
+</VBox>
