@@ -23,6 +23,7 @@ import javafx.util.Duration;
 import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -78,12 +79,15 @@ public class MainViewController implements Initializable {
     //Hozzáadás funkció
     @FXML
     private void onEventAddClick() {
+
         String eventName = eventstext.getText();
         LocalDate eventDate = datepicker.getValue();
+        System.out.println(eventDate);
         if (!eventName.isEmpty()) {
             CheckBox checkBox = new CheckBox();
             Label eventLabel = new Label(eventName);
             Label eventDateLabel = new Label(eventDate.toString());
+
 
             //Event hozzáadása naptárhoz
             CalendarEvent newEvent = new CalendarEvent(eventName, eventDate, CalendarEventType.EVENT, false);
@@ -138,6 +142,7 @@ public class MainViewController implements Initializable {
                         // HBox eltüntetése
                         eventsbox.getChildren().remove(eventHBox);
                         eventsbox.getChildren().remove(eventDateLabel);
+                        EventManager.removeEvent(eventName,eventDate);
                     });
 
                     pause.play();

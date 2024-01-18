@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ac3906a-d75b-4095-93ca-be0fb5e79ba9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/DayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/DayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/MainViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/MonthlyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/MonthlyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/YearViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/YearViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/managers/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/managers/EventManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/managers/PageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/managers/PageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/year-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/year-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,19 +41,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/asdfn/OneDrive - Eotvos Lorand Tudomanyegyetem/felev3/esprog/c2/CalendarIO",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "inlay.hints"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Thurneer\Documents\GitHub\Calendario\src\main\resources\io\blackjesus\calendario\views" />

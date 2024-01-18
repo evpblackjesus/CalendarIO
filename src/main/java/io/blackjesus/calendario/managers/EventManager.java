@@ -6,9 +6,12 @@ import io.blackjesus.calendario.models.CalendarEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
+
 public class EventManager {
+
 
     public static List<CalendarEvent> events = new ArrayList<>(Arrays.asList(
             new CalendarEvent("Kutya", LocalDate.of(2023, 12, 5), CalendarEventType.TASK, false),
@@ -32,5 +35,15 @@ public class EventManager {
             }
         }
         return foundEvents;
+    }
+    public static void removeEvent(String eventName, LocalDate date) {
+        // Iterator használata az események végigiterálásához és törléséhez
+        Iterator<CalendarEvent> iterator = events.iterator();
+        while (iterator.hasNext()) {
+            CalendarEvent event = iterator.next();
+            if (event.getTitle().equals(eventName) && event.getDate().isEqual(date)) {
+                iterator.remove(); // Az esemény törlése az iterator segítségével
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
         PageManager.loadPages();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1220, 640);
-        stage.setTitle("Hello!");
+        stage.setTitle("Calendario");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

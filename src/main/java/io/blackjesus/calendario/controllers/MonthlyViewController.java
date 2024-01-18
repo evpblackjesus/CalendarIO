@@ -2,6 +2,7 @@ package io.blackjesus.calendario.controllers;
 
 import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.DayStyling;
+import io.blackjesus.calendario.controllers.YearViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -67,6 +68,14 @@ public class MonthlyViewController implements Initializable {
         currentYear = date.getYear();
         currentMonth = date.getMonthValue();
     }
+    public void setDisplayedMonth(int year, int month) {
+        currentYear = year;
+        currentMonth = month;
+        updateViewLabel();
+        updateCalendar();
+    }
+
+
 
     @FXML
     private GridPane monthlyViewGrid;
@@ -112,6 +121,18 @@ public class MonthlyViewController implements Initializable {
                     dayStyling.setToday(date.isEqual(LocalDate.now()));
                     Node node = PageManager.loadFxml("day", param -> new DayController(date, finalRenderingCurrentMonth, dayStyling));
                     monthlyViewGrid.add(node, j, i);
+
+
+
+                    // Ezen rész hozzáadása: Ha a gombra kattintanak, megjelenítjük a havi nézetet
+                    if (node instanceof Button) {
+                        Button button = (Button) node;
+                        button.setOnAction(event -> {
+                            int year = currentYear;
+                            int month = currentMonth;
+                            monthlyViewGrid.getChildren().add(node);
+                        });
+                    }
                 }
             }
         }
@@ -160,7 +181,10 @@ public class MonthlyViewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateViewLabel();
-        updateCalendar();
+        // Az aktuális dátum inicializálása
+        LocalDate date = LocalDate.now();
+
+        // Az év és hónap megjelenítése a naptáron
+        setDisplayedMonth(date.getYear(), date.getMonthValue());
     }
 }
