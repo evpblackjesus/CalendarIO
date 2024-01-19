@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="245.0" prefWidth="396.0" style="-fx-border-color: red;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.DailyViewController">
+<AnchorPane prefHeight="638.0" prefWidth="664.0" style="-fx-border-color: red;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.DailyViewController">
    <children>
-      <DatePicker layoutX="14.0" layoutY="59.0" prefHeight="113.0" prefWidth="222.0" />
+      <HBox layoutX="8.0" layoutY="8.0" prefHeight="638.0" prefWidth="664.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="332.0">
+               <children>
+                  <DatePicker fx:id="datePicker" prefHeight="45.0" prefWidth="331.0" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="332.0" style="-fx-alignment: center;">
+               <children>
+                  <Button id="now" onAction="#nowButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" text="Most" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Text fx:id="yearmonth" strokeType="OUTSIDE" strokeWidth="0.0" text="2024 szept" textAlignment="CENTER" wrappingWidth="332.650390625">
+                     <font>
+                        <Font name="Arial" size="65.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="day" strokeType="OUTSIDE" strokeWidth="0.0" text="25" textAlignment="CENTER" wrappingWidth="332.9375">
+                     <font>
+                        <Font size="120.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="dayname" strokeType="OUTSIDE" strokeWidth="0.0" text="Csütörtök" textAlignment="CENTER" wrappingWidth="332.64453125">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
