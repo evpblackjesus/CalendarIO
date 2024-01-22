@@ -6,8 +6,10 @@ import io.blackjesus.calendario.controllers.YearViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
@@ -68,13 +70,6 @@ public class MonthlyViewController implements Initializable {
         currentYear = date.getYear();
         currentMonth = date.getMonthValue();
     }
-    public void setDisplayedMonth(int year, int month) {
-        currentYear = year;
-        currentMonth = month;
-        updateViewLabel();
-        updateCalendar();
-    }
-
 
 
     @FXML
@@ -95,6 +90,16 @@ public class MonthlyViewController implements Initializable {
 
     private void updateViewLabel() {
         currentViewLabel.setText(currentYear + ". " + Month.of(currentMonth).getDisplayName(TextStyle.FULL, Locale.of("hu")));
+    }
+
+    /**
+     * A megadott év, hónap szerint tölti be a naptárt
+     */
+    public void setDisplayedMonth(int year, int month) {
+        currentYear = year;
+        currentMonth = month;
+        updateViewLabel();
+        updateCalendar();
     }
 
     /**
@@ -181,10 +186,7 @@ public class MonthlyViewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Az aktuális dátum inicializálása
-        LocalDate date = LocalDate.now();
-
         // Az év és hónap megjelenítése a naptáron
-        setDisplayedMonth(date.getYear(), date.getMonthValue());
+        setDisplayedMonth(currentYear, currentMonth);
     }
 }

@@ -2,6 +2,7 @@ package io.blackjesus.calendario.controllers;
 
 import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.controllers.MonthlyViewController;
+import io.blackjesus.calendario.controllers.MainViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,34 +60,31 @@ public class YearViewController {
         String id = source.getId();
         System.out.println(currentYear+" "+id);
         openMonthlyView(currentYear, Integer.parseInt(id));
+        //openMonthlyView2(currentYear,Integer.parseInt(id));
     }
 
+    /**
+     * Az éves nézetből kiválasztott dátum alapján létrehozza a havi nézetet, majd kicseréli az oldat
+     */
+    public void openMonthlyView(int year, int month) {
+        try {
+            // FXMLLoader, amely betölti a monthly-view-t.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/io/blackjesus/calendario/views/monthly-view.fxml"));
+            // Node példány
+            Node newContent = loader.load();
 
-        public void openMonthlyView(int year, int month) {
-            try {
-                // FXMLLoader létrehozása
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/io/blackjesus/calendario/views/monthly-view.fxml"));
-                Parent root = loader.load();
+            MonthlyViewController monthlyController = loader.getController();
+            // Év, hónap beállítása controllerben
+            monthlyController.setDisplayedMonth(year, month);
 
-                // MonthlyViewController lekérése a controller beállításához
-                MonthlyViewController monthlyController = loader.getController();
+            // pages HashMap-hez oldal hozzáadása.
+            PageManager.pages.put("monthly", (Parent) newContent);
+            // Majd oldalt váltunk
+            PageManager.switchPage("monthly");
 
-                // Év és hónap beállítása a MonthlyViewController-ben
-                monthlyController.setDisplayedMonth(year, month);
-
-                // Stage és Scene inicializálása
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                // Stage beállítása és megjelenítése
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
-
+    }
 
 }
