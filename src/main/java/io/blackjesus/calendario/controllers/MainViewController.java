@@ -91,7 +91,7 @@ public class MainViewController implements Initializable {
 
             //Event hozzáadása naptárhoz
             CalendarEvent newEvent = new CalendarEvent(eventName, eventDate, CalendarEventType.EVENT, false);
-            EventManager.events.add(newEvent);
+            EventManager.addEvent(newEvent);
 
 
 
@@ -107,6 +107,9 @@ public class MainViewController implements Initializable {
                 if (checkBox.isSelected()) {
                     //notification cuccos, ezt majd át akarom rakni az eventNotification() metódusba.
                     try {
+
+
+
                         //Obtain only one instance of the SystemTray object
                         SystemTray tray = SystemTray.getSystemTray();
                         Image image = Toolkit.getDefaultToolkit().createImage("some-icon.png");

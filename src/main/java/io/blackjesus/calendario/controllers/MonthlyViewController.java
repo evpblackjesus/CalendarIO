@@ -22,6 +22,12 @@ import java.util.ResourceBundle;
 
 public class MonthlyViewController implements Initializable {
 
+    private static MonthlyViewController monthlyViewController;
+
+    public static MonthlyViewController getInstance() {
+        return monthlyViewController;
+    }
+
     private int currentYear;
 
     //Nem index, tehát január: 1, február: 2 stb...
@@ -108,7 +114,7 @@ public class MonthlyViewController implements Initializable {
     /**
      * Frissíti a GUI-t az éppen aktuális értékek alapján
      */
-    private void updateCalendar() {
+    public void updateCalendar() {
         monthlyViewGrid.getChildren().clear();
         LocalDate[][] calendarMatrix = new LocalDate[6][7];
         fillCalendar(calendarMatrix, currentYear, currentMonth);
@@ -189,6 +195,10 @@ public class MonthlyViewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if(monthlyViewController == null) {
+            monthlyViewController = this;
+        }
+
         // Az év és hónap megjelenítése a naptáron
         setDisplayedMonth(currentYear, currentMonth);
     }

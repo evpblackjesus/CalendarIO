@@ -4,6 +4,7 @@ import io.blackjesus.calendario.HelloApplication;
 import io.blackjesus.calendario.controllers.DayController;
 import io.blackjesus.calendario.controllers.MainViewController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.util.Callback;
 
@@ -23,6 +24,13 @@ public class PageManager {
             mainViewController.switchContent(pages.get(pageName));
         }
     }
+
+    public static void switchPage(Node node) {
+        if(mainViewController != null) {
+            mainViewController.switchContent(node);
+        }
+    }
+
     public static void setDatePickerDate (LocalDate date){
         if(mainViewController != null) {
             mainViewController.datepicker.setValue(date);

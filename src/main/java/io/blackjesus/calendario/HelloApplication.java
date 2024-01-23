@@ -1,5 +1,6 @@
 package io.blackjesus.calendario;
 
+import io.blackjesus.calendario.controllers.WeeklyViewController;
 import io.blackjesus.calendario.managers.PageManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

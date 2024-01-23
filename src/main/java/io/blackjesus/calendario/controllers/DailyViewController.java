@@ -1,10 +1,12 @@
 package io.blackjesus.calendario.controllers;
 
 import io.blackjesus.calendario.managers.EventManager;
+import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.CalendarEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -18,6 +20,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DailyViewController {
+
+    private static DailyViewController dailyViewController;
+
+    public static DailyViewController getInstance() {
+        return dailyViewController;
+    }
 
     @FXML
     private Text yearmonth;
@@ -74,6 +82,10 @@ public class DailyViewController {
     // Inicializáló metódus, itt lehet beállítani például az eseményfigyelőket
     @FXML
     void initialize() {
+        if(dailyViewController == null) {
+            dailyViewController = this;
+        }
+
         // Eseményfigyelő hozzáadása a DatePicker-hez
         datePicker.setOnAction(e -> handleDatePickerAction());
         if (yearmonth.getText().equals("") && day.getText().equals("") && dayname.getText().equals("")){
@@ -102,7 +114,7 @@ public class DailyViewController {
     }
 
     // Dátum beállító metódus
-    void setDate(LocalDate setdate) {
+    public void setDate(LocalDate setdate) {
         eventsContainer.getChildren().clear();
 
         currentYearMonth = setdate.getYear() + " " + getShortMonthName(setdate.getMonthValue());
@@ -143,6 +155,10 @@ public class DailyViewController {
 
         container.setStyle("-fx-background-color: " + bgColor + "; -fx-background-radius: 15;");
 
+        container.setOnMouseClicked(event -> {
+            Parent parent = PageManager.loadFxml("event-modify-view", param -> new EventModifyViewController(calendarEvent, "daily"));
+            PageManager.switchPage(parent);
+        });
 
         Label titleLabel = new Label();
         titleLabel.setText(calendarEvent.getTitle());

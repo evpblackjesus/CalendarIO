@@ -37,7 +37,8 @@ public class YearViewController {
     public void initialize() {
         LocalDate date = LocalDate.now();
         currentYear = date.getYear();
-        yearLabel.setText(Integer.toString(currentYear));    }
+        yearLabel.setText(Integer.toString(currentYear));
+    }
 
     // A következő év gomb eseménykezelője
     //year < 2000 || year > LocalDate.now().getYear() + 20
@@ -51,8 +52,8 @@ public class YearViewController {
     // Az előző év gomb eseménykezelője
     public void onPrevYearClick(ActionEvent actionEvent) {
         if (currentYear > 2000){
-        currentYear--;
-        yearLabel.setText(Integer.toString(currentYear));
+            currentYear--;
+            yearLabel.setText(Integer.toString(currentYear));
         }
     }
     public void show(ActionEvent actionEvent) {
@@ -60,31 +61,13 @@ public class YearViewController {
         String id = source.getId();
         System.out.println(currentYear+" "+id);
         openMonthlyView(currentYear, Integer.parseInt(id));
-        //openMonthlyView2(currentYear,Integer.parseInt(id));
     }
 
     /**
      * Az éves nézetből kiválasztott dátum alapján létrehozza a havi nézetet, majd kicseréli az oldat
      */
     public void openMonthlyView(int year, int month) {
-        try {
-            // FXMLLoader, amely betölti a monthly-view-t.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/io/blackjesus/calendario/views/monthly-view.fxml"));
-            // Node példány
-            Node newContent = loader.load();
-
-            MonthlyViewController monthlyController = loader.getController();
-            // Év, hónap beállítása controllerben
-            monthlyController.setDisplayedMonth(year, month);
-
-            // pages HashMap-hez oldal hozzáadása.
-            PageManager.pages.put("monthly", (Parent) newContent);
-            // Majd oldalt váltunk
-            PageManager.switchPage("monthly");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        MonthlyViewController.getInstance().setDisplayedMonth(year, month);
+        PageManager.switchPage("monthly");
     }
-
 }

@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import io.blackjesus.calendario.managers.PageManager;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -118,6 +119,11 @@ public class DayController implements Initializable {
         titleLabel.setText(calendarEvent.getTitle());
         titleLabel.setTextFill(Color.WHITE);
         titleLabel.setStyle("-fx-strikethrough: true;");
+
+        container.setOnMouseClicked(event -> {
+            Parent parent = PageManager.loadFxml("event-modify-view", param -> new EventModifyViewController(calendarEvent, "monthly"));
+            PageManager.switchPage(parent);
+        });
 
         container.getChildren().add(titleLabel);
         return container;

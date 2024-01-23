@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.EventModifyViewController">
+    <children>
+
+        <VBox prefHeight="638.0" prefWidth="52.0">
+            <children>
+                <Button layoutX="14.0" layoutY="42.0" mnemonicParsing="false" onAction="#cancelEvent" text="&lt;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+            </children>
+            <padding>
+                <Insets left="12.0" top="20.0" />
+            </padding>
+        </VBox>
+        <VBox prefHeight="638.0" prefWidth="612.0" spacing="12.0">
+            <children>
+                <Label text="Esemény neve" />
+                <TextField fx:id="eventTitle" />
+                <Label text="Esemény dátuma" />
+                <DatePicker fx:id="datePicker">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></DatePicker>
+                <Label text="Esemény típusa" />
+                <ComboBox fx:id="typeCmb" prefWidth="150.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></ComboBox>
+                <CheckBox fx:id="completedChb" mnemonicParsing="false" text="Elvégezve">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </CheckBox>
+                <HBox alignment="TOP_CENTER" prefHeight="36.0" prefWidth="588.0" spacing="12.0">
+                    <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="25.0" prefWidth="150.0" text="Mégse">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveEvent" prefHeight="25.0" prefWidth="150.0" text="Mentés">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+            <padding>
+                <Insets left="12.0" right="12.0" top="20.0" />
+            </padding></VBox>
+    </children>
+</HBox>
