@@ -88,6 +88,9 @@ public class MonthlyViewController implements Initializable {
         setCurrentMonth(currentMonth - 1);
     }
 
+    @FXML
+    private void nowClick() {setCurrentYear(LocalDate.now().getYear());setCurrentMonth(LocalDate.now().getMonthValue());}
+
     private void updateViewLabel() {
         currentViewLabel.setText(currentYear + ". " + Month.of(currentMonth).getDisplayName(TextStyle.FULL, Locale.of("hu")));
     }

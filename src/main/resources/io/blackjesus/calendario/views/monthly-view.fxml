@@ -35,13 +35,13 @@
             </GridPane>
          </children>
       </VBox>
-      <HBox alignment="CENTER_LEFT" layoutX="19.0" layoutY="8.0" prefHeight="44.0" prefWidth="384.0" spacing="10.0">
+      <HBox alignment="CENTER_LEFT" layoutX="19.0" layoutY="8.0" prefHeight="44.0" prefWidth="400.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#onPrevMonthClick" text="&lt;">
+            <Button mnemonicParsing="false" onAction="#onPrevMonthClick" prefHeight="25.0" prefWidth="78.0" text="&lt;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button mnemonicParsing="false" onAction="#onNextMonthClick" text="&gt;">
+            <Button mnemonicParsing="false" onAction="#onNextMonthClick" prefHeight="25.0" prefWidth="78.0" text="&gt;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -53,6 +53,7 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
+             <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#nowClick" prefHeight="25.0" prefWidth="92.0" text="Most" textAlignment="CENTER" />
          </children>
          <padding>
             <Insets left="10.0" />

@@ -25,7 +25,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Text fx:id="yearmonth" strokeType="OUTSIDE" strokeWidth="0.0" text="2024 szept" textAlignment="CENTER" wrappingWidth="332.650390625">
+                  <Text fx:id="yearmonth" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="332.650390625">
                      <font>
                         <Font name="Arial" size="65.0" />
                      </font>
@@ -33,7 +33,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fx:id="day" strokeType="OUTSIDE" strokeWidth="0.0" text="25" textAlignment="CENTER" wrappingWidth="332.9375">
+                  <Text fx:id="day" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="332.9375">
                      <font>
                         <Font size="120.0" />
                      </font>
@@ -41,7 +41,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fx:id="dayname" strokeType="OUTSIDE" strokeWidth="0.0" text="Csütörtök" textAlignment="CENTER" wrappingWidth="332.64453125">
+                  <Text fx:id="dayname" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="332.64453125">
                      <font>
                         <Font size="72.0" />
                      </font>

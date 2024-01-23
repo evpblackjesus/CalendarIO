@@ -61,6 +61,9 @@ public class DailyViewController {
     void initialize() {
         // Eseményfigyelő hozzáadása a DatePicker-hez
         datePicker.setOnAction(e -> handleDatePickerAction());
+        if (yearmonth.getText().equals("") && day.getText().equals("") && dayname.getText().equals("")){
+            setDate(LocalDate.now());
+        }
     }
 
     // Gombnyomásra az aktuális dátumot beállító metódus
