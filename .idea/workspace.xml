@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8ac3906a-d75b-4095-93ca-be0fb5e79ba9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/WeeklyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/WeeklyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/DailyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/blackjesus/calendario/controllers/DailyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/daily-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/blackjesus/calendario/views/daily-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

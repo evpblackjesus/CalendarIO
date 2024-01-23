@@ -16,11 +16,15 @@
             <VBox prefHeight="200.0" prefWidth="332.0">
                <children>
                   <DatePicker fx:id="datePicker" prefHeight="45.0" prefWidth="331.0" />
+                  <VBox fx:id="eventsContainer" prefHeight="592.0" prefWidth="331.0" spacing="5.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin></VBox>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="332.0" style="-fx-alignment: center;">
                <children>
-                  <Button id="now" onAction="#nowButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" text="Most" textAlignment="CENTER">
+                  <Button id="now" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#nowButton" text="Most" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
