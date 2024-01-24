@@ -4,24 +4,15 @@ import io.blackjesus.calendario.managers.PageManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-<<<<<<< HEAD
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-=======
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-
-import java.awt.*;
-import java.io.BufferedReader;
->>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,24 +20,6 @@ import java.util.ResourceBundle;
 public class WeeklyViewController implements Initializable {
 
     private LocalDate localDate;
-=======
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.WeekFields;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-public class WeeklyViewController implements Initializable {
-
-
-    private int currentYear;
-    private int currentMonth;
-    private int currentWeek;
-
-    private LocalDate localDate;
-
->>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
 
     /**
      * Navigáció az előző hétre
@@ -72,7 +45,6 @@ public class WeeklyViewController implements Initializable {
         }
     }
 
-<<<<<<< HEAD
     /**
      * Megnyitja a havi nézetet a jelenlegi hét évével és hónapjával
      */
@@ -128,10 +100,6 @@ public class WeeklyViewController implements Initializable {
      * Visszaadja az adott héten található napok listáját
      */
     public static List<Integer> daysOfWeek(LocalDate date) {
-=======
-    /*
-    public List<Integer> setCurrentWeek(int year, int month, int weekNumber) {
->>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
         List<Integer> days = new ArrayList<>();
 
         // Hétfőtől vasárnapig (1-től 7-ig)
@@ -143,7 +111,6 @@ public class WeeklyViewController implements Initializable {
         endDate = date.with(DayOfWeek.of(7));
 
         return days;
-<<<<<<< HEAD
     }
 
     /**
@@ -155,57 +122,6 @@ public class WeeklyViewController implements Initializable {
         daysOfWeek(date);
         currentDateUpdate(startDate, endDate);
     }
-=======
-
-    }*/
-
-    /**
-     * Navigáció az előző hétre
-     */
-    @FXML
-    private void prevWeek(){
-        if (localDate != null) {
-            localDate=localDate.minusWeeks(1);
-            updateWeeklyView();
-            currentDateUpdate(startDate,endDate);
-        }
-    }
-    /**
-     * Navigáció a következő hétre
-     */
-    @FXML
-    private void nextWeek(){
-        if (localDate != null) {
-            localDate=localDate.plusWeeks(1);
-            updateWeeklyView();
-            currentDateUpdate(startDate,endDate);
-        }
-    }
-    /**
-     * Megnyitja a havi nézetet a jelenlegi hét évével és hónapjával
-     */
-    @FXML
-    private void openMonthlyViewButton(){
-        openMonthlyView(startDate.getYear(),startDate.getMonthValue());
-    }
-    /**
-     * Frissíti a heti nézetet a jelenlegi dátumra
-     */
-    @FXML
-    private void nowButton(){
-        start(LocalDate.now());
-    }
-
-    @FXML
-    private GridPane weeklyViewGrid;
-
-    private static LocalDate startDate;
-    private static LocalDate endDate;
-    @FXML
-    private Text currentDate;
-    @FXML
-    private Text currentDateMonth;
->>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
 
     /**
      * Frissíti a két szövegmezőt
@@ -216,7 +132,6 @@ public class WeeklyViewController implements Initializable {
         DateTimeFormatter Monthformatter = DateTimeFormatter.ofPattern("MMMM");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd");
 
-<<<<<<< HEAD
         if (start.getMonth().equals(end.getMonth())) {
             DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd");
             formattedStartDate = start.format(formatter);
@@ -228,82 +143,6 @@ public class WeeklyViewController implements Initializable {
         } else {
             formattedStartDate = start.format(formatter);
             formattedEndDate = end.format(formatter);
-=======
-    /**
-     * Beírja a Grid-be a megfelelő napokat
-     */
-    private void updateWeeklyView() {
-        List<Node> nodesToRemove = new ArrayList<>();
-        for (Node node : weeklyViewGrid.getChildren()) {
-            Integer rowIndex = GridPane.getRowIndex(node);
-            if (rowIndex != null && rowIndex == 1) {
-                nodesToRemove.add(node);
-            }
-        }
-        weeklyViewGrid.getChildren().removeAll(nodesToRemove);
-        List<Integer> days = daysOfWeek(localDate);
-
-        for (int i = 0; i < days.size(); i++) {
-            Text dayText = new Text(String.valueOf(days.get(i)));
-            weeklyViewGrid.add(dayText, i, 1);
-        }
-    }
-
-    /**
-     * Visszaadja az adott héten található napok listáját
-     */
-    public static List<Integer> daysOfWeek(LocalDate date) {
-        List<Integer> days = new ArrayList<>();
-
-        // Hétfőtől vasárnapig (1-től 7-ig)
-        for (int i = 1; i <= 7; i++) {
-            LocalDate currentDay = date.with(DayOfWeek.of(i));
-            days.add(currentDay.getDayOfMonth());
-        }
-        startDate = date.with(DayOfWeek.of(1));
-        endDate = date.with(DayOfWeek.of(7));
-
-        //System.out.printf(startDate+" "+endDate);
-
-        return days;
-    }
-
-    /**
-     * A megadott dátum alapján idul el
-     */
-    public void start(LocalDate date) {
-        localDate = date;
-        updateWeeklyView();
-        daysOfWeek(date);
-        currentDateUpdate(startDate,endDate);
-
-    }
-
-    /**
-     * Frissíti a két szövegmezőt
-     */
-    private void currentDateUpdate(LocalDate start, LocalDate end) {
-
-        String formattedStartDate = "";
-        String formattedEndDate = "";
-        DateTimeFormatter Monthformatter = DateTimeFormatter.ofPattern("MMMM");
-
-
-        if (start.getMonth().equals(end.getMonth())){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd");
-            DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd");
-             formattedStartDate = start.format(formatter);
-             formattedEndDate = end.format(formatter2);
-        } else if (start.getYear()==(end.getYear())) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd");
-            DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MMMM dd");
-             formattedStartDate = start.format(formatter);
-             formattedEndDate = end.format(formatter2);
-        }else {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd");
-             formattedStartDate = start.format(formatter);
-             formattedEndDate = end.format(formatter);
->>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
         }
 
         String merge = formattedStartDate + " - " + formattedEndDate;
