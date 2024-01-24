@@ -1,10 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: red;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.WeeklyViewController">
-   <children>
-      <Label layoutX="129.0" layoutY="169.0" text="HAVIII NÉZET" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.WeeklyViewController">
+<children>
+   <VBox alignment="CENTER">
+      <children>
+         <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="664.0">
+            <children>
+               <Button mnemonicParsing="false" text="&lt;">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Január">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="5.0" right="5.0" />
+                  </HBox.margin>
+               </Text>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Button mnemonicParsing="false" text="&lt;" />
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2024. január 23" textAlignment="CENTER">
+                  <font>
+                     <Font size="21.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="15.0" right="15.0" />
+                  </HBox.margin>
+               </Text>
+               <Button mnemonicParsing="false" text="&gt;" />
+            </children>
+         </HBox>
+         <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="155.0" prefWidth="664.0" style="-fx-alignment: center;">
+            <columnConstraints>
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="53.0" valignment="CENTER" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="109.0" minHeight="0.0" prefHeight="102.0" valignment="CENTER" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hétfő" textAlignment="CENTER">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kedd" GridPane.columnIndex="1">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Szerda" GridPane.columnIndex="2">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Csütörtök" GridPane.columnIndex="3">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Péntek" GridPane.columnIndex="4">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Szombat" GridPane.columnIndex="5">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vasárnap" GridPane.columnIndex="6">
+                  <font>
+                     <Font size="17.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="22" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="33.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="23" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="33.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="24" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="33.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="25" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="33.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="26" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="33.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="27" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="33.0" />
+                  </font>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="28" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                  <font>
+                     <Font size="33.0" />
+                  </font>
+               </Text>
+            </children>
+         </GridPane>
+      </children>
+   </VBox>
+</children>
 </AnchorPane>

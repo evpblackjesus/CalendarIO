@@ -6,24 +6,16 @@ import java.time.LocalDate;
 
 public class CalendarEvent {
 
-    private String title, location, description;
+    private String title;
     private LocalDate date;
     private CalendarEventType type;
-    private boolean isCompleted, isSendNotification;
+    private boolean isCompleted;
 
     public CalendarEvent(String title, LocalDate date, CalendarEventType type, boolean isCompleted) {
         this.type = type;
         this.date = date;
         this.isCompleted = isCompleted;
         this.title = title;
-    }
-
-    public CalendarEvent(String title, String location, LocalDate date, CalendarEventType type, boolean isCompleted) {
-        this.title = title;
-        this.location = location;
-        this.date = date;
-        this.type = type;
-        this.isCompleted = isCompleted;
     }
 
     @Override
@@ -66,29 +58,5 @@ public class CalendarEvent {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public boolean isSendNotification() {
-        return isSendNotification;
-    }
-
-    public void setSendNotification(boolean sendNotification) {
-        isSendNotification = sendNotification;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

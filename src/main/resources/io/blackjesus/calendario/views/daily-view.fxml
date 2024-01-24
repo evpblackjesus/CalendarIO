@@ -1,10 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="245.0" prefWidth="396.0" style="-fx-border-color: red;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.DailyViewController">
+<AnchorPane prefHeight="638.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.DailyViewController">
    <children>
-      <DatePicker layoutX="14.0" layoutY="59.0" prefHeight="113.0" prefWidth="222.0" />
+      <HBox layoutX="8.0" layoutY="8.0" prefHeight="638.0" prefWidth="664.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="332.0">
+               <children>
+                  <DatePicker fx:id="datePicker" prefHeight="45.0" prefWidth="331.0" />
+                  <VBox fx:id="eventsContainer" prefHeight="592.0" prefWidth="331.0" spacing="5.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin></VBox>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="332.0" style="-fx-alignment: center;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#prevDay" text="&lt;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="now" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#nowButton" text="Most" textAlignment="CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#nextDay" text="&gt;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Text fx:id="yearmonth" strokeType="OUTSIDE" strokeWidth="0.0" text="2023. asd" textAlignment="CENTER" wrappingWidth="332.650390625">
+                     <font>
+                        <Font name="Arial" size="50.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="day" strokeType="OUTSIDE" strokeWidth="0.0" text="21" textAlignment="CENTER" wrappingWidth="332.9375">
+                     <font>
+                        <Font name="System Bold" size="120.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="dayname" strokeType="OUTSIDE" strokeWidth="0.0" text="Szerda" textAlignment="CENTER" wrappingWidth="332.64453125">
+                     <font>
+                        <Font size="62.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

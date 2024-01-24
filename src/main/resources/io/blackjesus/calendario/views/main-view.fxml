@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.5, 0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.MainViewController">
+<SplitPane dividerPositions="0.5, 0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.MainViewController">
    <items>
       <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="248.0" SplitPane.resizableWithParent="false">
          <children>
@@ -43,7 +43,15 @@
             <VBox alignment="TOP_CENTER" prefHeight="75.0">
                <children>
                   <TextField fx:id="eventstext" promptText="Adjon meg egy eseményt" />
-                  <Button id="eventsbutton" fx:id="addEventButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onEventAddClick" text="Hozzáad" textAlignment="CENTER" />
+                  <DatePicker fx:id="datepicker">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Button id="eventsbutton" fx:id="addEventButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onEventAddClick" text="Hozzáad" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <ScrollPane id="eventscrollpane" prefHeight="450.0" prefWidth="200.0">

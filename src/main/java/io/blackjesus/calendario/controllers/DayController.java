@@ -1,13 +1,14 @@
 package io.blackjesus.calendario.controllers;
 
 import io.blackjesus.calendario.managers.EventManager;
-import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.CalendarEvent;
 import io.blackjesus.calendario.models.DayStyling;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import io.blackjesus.calendario.managers.PageManager;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -15,6 +16,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
 
 import java.net.URL;
+import java.util.Date;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.List;
@@ -99,10 +105,6 @@ public class DayController implements Initializable {
     private HBox createCalendarEventBox(CalendarEvent calendarEvent) {
         HBox container = new HBox();
         container.setCursor(Cursor.HAND);
-        container.setOnMouseClicked(event -> {
-            PageManager.switchPage(PageManager.loadFxml("event-modify-view", param -> new EventModifyViewController(calendarEvent)));
-        });
-
         String bgColor = "";
         switch (calendarEvent.getType()) {
             case EVENT -> bgColor = "rgb(121,134,203)";
@@ -117,6 +119,11 @@ public class DayController implements Initializable {
         titleLabel.setText(calendarEvent.getTitle());
         titleLabel.setTextFill(Color.WHITE);
         titleLabel.setStyle("-fx-strikethrough: true;");
+
+        container.setOnMouseClicked(event -> {
+            Parent parent = PageManager.loadFxml("event-modify-view", param -> new EventModifyViewController(calendarEvent, "monthly"));
+            PageManager.switchPage(parent);
+        });
 
         container.getChildren().add(titleLabel);
         return container;

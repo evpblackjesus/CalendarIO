@@ -1,6 +1,5 @@
 package io.blackjesus.calendario.controllers;
 
-import io.blackjesus.calendario.managers.MonthlyViewManager;
 import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.CalendarEvent;
 import javafx.fxml.FXML;
@@ -8,59 +7,50 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class EventModifyViewController implements Initializable {
-
-    private final CalendarEvent event;
-
-    public EventModifyViewController(CalendarEvent event) {
+    private CalendarEvent event;
+    private String pageName;
+    public EventModifyViewController(CalendarEvent event, String pageName) {
         this.event = event;
+        this.pageName = pageName;
     }
 
     @FXML
-    public TextField titleTxf;
+    private TextField eventTitle;
 
     @FXML
-    public DatePicker dateDp;
+    private DatePicker datePicker;
 
     @FXML
-    public TextField locationTxf;
+    private ComboBox typeCmb;
 
     @FXML
-    public CheckBox reminderChb;
+    private CheckBox completedChb;
 
     @FXML
-    public TextArea descriptionTxa;
+    public void saveEvent() {
+        event.setTitle(eventTitle.getText());
+        event.setDate(datePicker.getValue());
+        event.setCompleted(completedChb.isSelected());
 
-    private void switchBack(LocalDate viewDate) {
-        PageManager.switchPage("monthly");
-        MonthlyViewManager.setView(viewDate);
+        //Visszaváltás előtt frissíteni kell minden nézetet, hogy megváltozzon a megjelenése
+        MonthlyViewController.getInstance().updateCalendar();
+        DailyViewController.getInstance().setDate(event.getDate());
+
+        PageManager.switchPage(pageName);
     }
 
     @FXML
-    public void onCancelClick() {
-        switchBack(event.getDate());
-    }
-
-    @FXML
-    public void onSaveClick() {
-        LocalDate viewDate = event.getDate();
-        event.setTitle(titleTxf.getText());
-        event.setDate(dateDp.getValue());
-        event.setLocation(locationTxf.getText());
-        event.setSendNotification(reminderChb.isSelected());
-        event.setDescription(descriptionTxa.getText());
-        switchBack(viewDate);
+    public void cancelEvent() {
+        PageManager.switchPage(pageName);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        titleTxf.setText(event.getTitle());
-        dateDp.setValue(event.getDate());
-        locationTxf.setText(event.getLocation());
-        reminderChb.setSelected(event.isSendNotification());
-        descriptionTxa.setText(event.getDescription());
+        eventTitle.setText(event.getTitle());
+        datePicker.setValue(event.getDate());
+        completedChb.setSelected(event.isCompleted());
     }
 }

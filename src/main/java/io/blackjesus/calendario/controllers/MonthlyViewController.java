@@ -1,12 +1,15 @@
 package io.blackjesus.calendario.controllers;
 
-import io.blackjesus.calendario.managers.MonthlyViewManager;
 import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.DayStyling;
+import io.blackjesus.calendario.controllers.YearViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
@@ -19,6 +22,12 @@ import java.util.ResourceBundle;
 
 public class MonthlyViewController implements Initializable {
 
+    private static MonthlyViewController monthlyViewController;
+
+    public static MonthlyViewController getInstance() {
+        return monthlyViewController;
+    }
+
     private int currentYear;
 
     //Nem index, tehát január: 1, február: 2 stb...
@@ -28,7 +37,7 @@ public class MonthlyViewController implements Initializable {
      * currentYear változónak setter metódusa, az év nem lehet korábbi 2000-nél és későbbi 20 évvel későbbel
      * @param year
      */
-    public void setCurrentYear(int year) {
+    private void setCurrentYear(int year) {
         if(year < 2000 || year > LocalDate.now().getYear() + 20) {
             return;
         }
@@ -41,7 +50,7 @@ public class MonthlyViewController implements Initializable {
      * currentMonth változónak a setter metódusa, a hónap nem lehet kisebb 1-nél valamint nagyobb 12-nél
      * @param month
      */
-    public void setCurrentMonth(int month) {
+    private void setCurrentMonth(int month) {
         if(month < 1) {
             //Előző évre lépés
             setCurrentYear(currentYear - 1);
@@ -68,6 +77,7 @@ public class MonthlyViewController implements Initializable {
         currentMonth = date.getMonthValue();
     }
 
+
     @FXML
     private GridPane monthlyViewGrid;
 
@@ -84,14 +94,27 @@ public class MonthlyViewController implements Initializable {
         setCurrentMonth(currentMonth - 1);
     }
 
+    @FXML
+    private void nowClick() {setCurrentYear(LocalDate.now().getYear());setCurrentMonth(LocalDate.now().getMonthValue());}
+
     private void updateViewLabel() {
         currentViewLabel.setText(currentYear + ". " + Month.of(currentMonth).getDisplayName(TextStyle.FULL, Locale.of("hu")));
     }
 
     /**
+     * A megadott év, hónap szerint tölti be a naptárt
+     */
+    public void setDisplayedMonth(int year, int month) {
+        currentYear = year;
+        currentMonth = month;
+        updateViewLabel();
+        updateCalendar();
+    }
+
+    /**
      * Frissíti a GUI-t az éppen aktuális értékek alapján
      */
-    private void updateCalendar() {
+    public void updateCalendar() {
         monthlyViewGrid.getChildren().clear();
         LocalDate[][] calendarMatrix = new LocalDate[6][7];
         fillCalendar(calendarMatrix, currentYear, currentMonth);
@@ -112,6 +135,18 @@ public class MonthlyViewController implements Initializable {
                     dayStyling.setToday(date.isEqual(LocalDate.now()));
                     Node node = PageManager.loadFxml("day", param -> new DayController(date, finalRenderingCurrentMonth, dayStyling));
                     monthlyViewGrid.add(node, j, i);
+
+
+
+                    // Ezen rész hozzáadása: Ha a gombra kattintanak, megjelenítjük a havi nézetet
+                    if (node instanceof Button) {
+                        Button button = (Button) node;
+                        button.setOnAction(event -> {
+                            int year = currentYear;
+                            int month = currentMonth;
+                            monthlyViewGrid.getChildren().add(node);
+                        });
+                    }
                 }
             }
         }
@@ -160,8 +195,11 @@ public class MonthlyViewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateViewLabel();
-        updateCalendar();
-        MonthlyViewManager.setMonthlyViewController(this);
+        if(monthlyViewController == null) {
+            monthlyViewController = this;
+        }
+
+        // Az év és hónap megjelenítése a naptáron
+        setDisplayedMonth(currentYear, currentMonth);
     }
 }
