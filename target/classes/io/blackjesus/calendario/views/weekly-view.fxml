@@ -144,13 +144,62 @@
                      <Font size="33.0" />
                   </font>
                </Text>
-                  <VBox fx:id="columnBox1" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
-                  <VBox fx:id="columnBox2" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <VBox fx:id="columnBox3" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <VBox fx:id="columnBox4" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <VBox fx:id="columnBox5" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <VBox fx:id="columnBox6" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                  <VBox fx:id="columnBox7" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" GridPane.rowIndex="2">
+                     <content>
+                        <VBox fx:id="columnBox1" prefHeight="317.0" prefWidth="92.0" spacing="5.0" style="-fx-background-color: #ffffff;">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <content>
+                        <VBox fx:id="columnBox2" prefHeight="317.0" prefWidth="92.0" spacing="5.0" style="-fx-background-color: #ffffff;">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <content>
+                        <VBox fx:id="columnBox3" prefHeight="317.0" prefWidth="92.0" spacing="5.0" style="-fx-background-color: #ffffff;">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <content>
+                        <VBox fx:id="columnBox4" prefHeight="317.0" prefWidth="92.0" spacing="5.0" style="-fx-background-color: #ffffff;">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <content>
+                        <VBox fx:id="columnBox5" prefHeight="317.0" prefWidth="92.0" spacing="5.0" style="-fx-background-color: #ffffff;">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                     <content>
+                        <VBox fx:id="columnBox6" prefHeight="317.0" prefWidth="92.0" spacing="5.0" style="-fx-background-color: #ffffff;">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                     <content>
+                        <VBox fx:id="columnBox7" prefHeight="317.0" prefWidth="92.0" spacing="5.0" style="-fx-background-color: #ffffff;">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding></VBox>
+                     </content>
+                  </ScrollPane>
             </children>
          </GridPane>
       </children>
