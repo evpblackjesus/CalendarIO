@@ -1,5 +1,6 @@
 package io.blackjesus.calendario.managers;
 
+import io.blackjesus.calendario.controllers.DailyViewController;
 import io.blackjesus.calendario.controllers.MonthlyViewController;
 import io.blackjesus.calendario.enums.CalendarEventType;
 import io.blackjesus.calendario.models.CalendarEvent;
@@ -31,6 +32,7 @@ public class EventManager {
     public static void addEvent(CalendarEvent calendarEvent) {
         events.add(calendarEvent);
         MonthlyViewController.getInstance().updateCalendar();
+        DailyViewController.getInstance().setDate(calendarEvent.getDate());
     }
 
     public static List<CalendarEvent> getEventsOnDate(LocalDate date) {
@@ -51,5 +53,7 @@ public class EventManager {
                 iterator.remove(); // Az esemény törlése az iterator segítségével
             }
         }
+        MonthlyViewController.getInstance().updateCalendar();
+        DailyViewController.getInstance().setDate(date);
     }
 }
