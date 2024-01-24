@@ -35,7 +35,11 @@ public class EventModifyViewController implements Initializable {
     private DatePicker datePicker;
 
     @FXML
+<<<<<<< HEAD
     private ComboBox<String> typeCmb;
+=======
+    private ComboBox<CalendarEventType> typeCmb;
+>>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
 
     @FXML
     private CheckBox completedChb;
@@ -46,16 +50,29 @@ public class EventModifyViewController implements Initializable {
         event.setTitle(eventTitle.getText());
         event.setDate(datePicker.getValue());
         event.setCompleted(completedChb.isSelected());
+<<<<<<< HEAD
         event.setType(CalendarEventType.getEventType(typeCmb.getValue()));
 
         if (event.isCompleted()){
             EventManager.removeEvent(event.getUuid());
         }
+=======
+        event.setType(typeCmb.getValue());
+>>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
 
         //Visszaváltás előtt frissíteni kell minden nézetet, hogy megváltozzon a megjelenése
         MonthlyViewController.getInstance().updateCalendar();
         DailyViewController.getInstance().setDate(event.getDate());
         MainViewController.getInstance().updateEventList();
+
+        if (event.isCompleted()){
+            System.out.printf("completed");
+            EventManager.removeEvent(eventTitle.getText(),datePicker.getValue());
+
+
+        }else {
+            System.out.printf("not completed");
+        }
 
         PageManager.switchPage(pageName);
     }
@@ -67,10 +84,15 @@ public class EventModifyViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+<<<<<<< HEAD
         for(CalendarEventType type : CalendarEventType.values()) {
             typeCmb.getItems().add(type.getDisplayValue());
         }
         typeCmb.setValue(event.getType().getDisplayValue());
+=======
+        typeCmb.getItems().setAll(CalendarEventType.values());
+        typeCmb.setValue(event.getType());
+>>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
         eventTitle.setText(event.getTitle());
         datePicker.setValue(event.getDate());
         completedChb.setSelected(event.isCompleted());

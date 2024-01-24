@@ -1,7 +1,10 @@
 package io.blackjesus.calendario.managers;
 
 import io.blackjesus.calendario.controllers.DailyViewController;
+<<<<<<< HEAD
 import io.blackjesus.calendario.controllers.MainViewController;
+=======
+>>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
 import io.blackjesus.calendario.controllers.MonthlyViewController;
 import io.blackjesus.calendario.enums.CalendarEventType;
 import io.blackjesus.calendario.models.CalendarEvent;
@@ -32,7 +35,10 @@ public class EventManager {
         events.sort(Comparator.comparing(CalendarEvent::getDate));
         MonthlyViewController.getInstance().updateCalendar();
         DailyViewController.getInstance().setDate(calendarEvent.getDate());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
     }
 
     public static List<CalendarEvent> getEventsOnDate(LocalDate date) {
@@ -55,10 +61,15 @@ public class EventManager {
                 iterator.remove(); // Az esemény törlése az iterator segítségével
             }
         }
+<<<<<<< HEAD
 
         if(removedEventDate != null) {
             MonthlyViewController.getInstance().updateCalendar();
             DailyViewController.getInstance().setDate(removedEventDate);
         }
+=======
+        MonthlyViewController.getInstance().updateCalendar();
+        DailyViewController.getInstance().setDate(date);
+>>>>>>> 089beaa731c0c085103ddff94823ea130b882e8b
     }
 }
