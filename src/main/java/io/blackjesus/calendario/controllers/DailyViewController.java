@@ -3,18 +3,18 @@ package io.blackjesus.calendario.controllers;
 import io.blackjesus.calendario.managers.EventManager;
 import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.CalendarEvent;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.event.ActionEvent;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -86,7 +86,7 @@ public class DailyViewController {
     // Inicializáló metódus, itt lehet beállítani például az eseményfigyelőket
     @FXML
     public void initialize() {
-        if(dailyViewController == null) {
+        if (dailyViewController == null) {
             dailyViewController = this;
         }
 
@@ -127,6 +127,7 @@ public class DailyViewController {
 
     // Dátum beállító metódus
     public void setDate(LocalDate setdate) {
+        date = setdate;
         eventsContainer.getChildren().clear();
         currentYearMonth = setdate.getYear() + " " + getShortMonthName(setdate.getMonthValue());
         currentDay = setdate.getDayOfMonth();
@@ -134,12 +135,10 @@ public class DailyViewController {
 
         //Eventek hozzáadása
         List<CalendarEvent> events = EventManager.getEventsOnDate(setdate);
-        if(!events.isEmpty()) {
-            int i = 0;
-            while(i < 3 && i < events.size()) {
-                HBox eventContainer = createCalendarEventBox(events.get(i));
+        if (!events.isEmpty()) {
+            for (CalendarEvent event : events) {
+                HBox eventContainer = createCalendarEventBox(event);
                 eventsContainer.getChildren().add(eventContainer);
-                i++;
             }
         } else {
             Label noEvent = new Label("Ezen a napon nincs esemény.");

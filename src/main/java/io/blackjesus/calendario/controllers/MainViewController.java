@@ -9,6 +9,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -18,31 +21,39 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
+    private static MainViewController mainViewController;
+
+    public static MainViewController getInstance() {
+        return mainViewController;
+    }
+
     @FXML
     private StackPane root;
-    @FXML
-    private VBox eventsBox;
+
     @FXML
     private TextField eventstext;
-    @FXML
-    private Button addEventButton;
+
     @FXML
     private VBox eventsbox;
-    @FXML
-    private CheckBox checkBox;
-    public DayController dayController;
+
     @FXML
     public DatePicker datepicker;
+
+    @FXML
+    public ComboBox<String> typeCmb;
 
     /**
      * Átváltja az oldalt a paraméterben átadott Node-ra
@@ -79,88 +90,76 @@ public class MainViewController implements Initializable {
     //Hozzáadás funkció
     @FXML
     private void onEventAddClick() {
-
         String eventName = eventstext.getText();
         LocalDate eventDate = datepicker.getValue();
-        System.out.println(eventDate);
+        CalendarEventType eventType = CalendarEventType.getEventType(typeCmb.getValue());
+
         if (!eventName.isEmpty()) {
-            CheckBox checkBox = new CheckBox();
-            Label eventLabel = new Label(eventName);
-            Label eventDateLabel = new Label(eventDate.toString());
-
-            //Event hozzáadása naptárhoz
-            CalendarEvent newEvent = new CalendarEvent(eventName, eventDate, CalendarEventType.EVENT, false);
-            EventManager.addEvent(newEvent);
-
-            HBox eventHBox = new HBox(checkBox, eventLabel);
-            eventHBox.setStyle("-fx-background-color: lightblue; -fx-border-color: black;");
-            eventDateLabel.setPadding(new Insets(0, 0, 9, 0));
-
-            //eseményfigyelő a CheckBox-hoz
-            checkBox.setOnAction(event -> {
-                // CheckBox ki van-e pipálva
-                if (checkBox.isSelected()) {
-                    //notification cuccos, ezt majd át akarom rakni az eventNotification() metódusba.
-                    try {
-                        //Obtain only one instance of the SystemTray object
-                        SystemTray tray = SystemTray.getSystemTray();
-                        Image image = Toolkit.getDefaultToolkit().createImage("some-icon.png");
-                        //Alternative (if the icon is on the classpath):
-                        //Image image = Toolkit.getDefaultToolkit().createImage(getClass().getResource("icon.png"));
-                        TrayIcon trayIcon = new TrayIcon(image, "Java AWT Tray Demo");
-                        //Let the system resize the image if needed
-                        trayIcon.setImageAutoSize(true);
-                        //Set tooltip text for the tray icon
-                        trayIcon.setToolTip("System tray icon demo");
-                        tray.add(trayIcon);
-
-                        // Display info notification:
-                        trayIcon.displayMessage("Esemény elvégezve!", "Sikeresen elvégeztél egy eseményt!", TrayIcon.MessageType.INFO);
-                        // Error:
-                        // trayIcon.displayMessage("Hello, World", "Java Notification Demo", MessageType.ERROR);
-                        // Warning:
-                        // trayIcon.displayMessage("Hello, World", "Java Notification Demo", MessageType.WARNING);
-
-                        //Töröljük az icon-t, hogy a program bezárás után ne fusson a háttérben
-                        tray.remove(trayIcon);
-                    } catch (Exception ex) {
-                        System.err.print(ex.getMessage());
-                    }
-                    //strikethrough stílus
-                    eventLabel.setStyle("-fx-strikethrough: true;");
-
-                    //PauseTransition-t a várakozáshoz
-                    PauseTransition pause = new PauseTransition(Duration.seconds(2)); // A 2 másodperces késleltetés
-
-                    // eseménykezelő
-                    pause.setOnFinished(e -> {
-                        // HBox eltüntetése
-                        eventsbox.getChildren().remove(eventHBox);
-                        eventsbox.getChildren().remove(eventDateLabel);
-                        EventManager.removeEvent(eventName,eventDate);
-                    });
-
-                    pause.play();
-                }
-            });
-
-            // Hbox hozzáadása eventsbox-hoz
-            eventsbox.getChildren().add(eventHBox);
-            eventsbox.getChildren().add(eventDateLabel);
-
-            // szöveg törlése
-            eventstext.clear();
+            CalendarEvent event = new CalendarEvent(eventName, eventDate, eventType, false);
+            EventManager.addEvent(event);
+            updateEventList();
         }
     }
 
-    //majd külön notfication funkció lesz dátum szerint
-    @FXML
-    private void eventNotification() {
+    public void updateEventList() {
+        eventsbox.getChildren().clear();
+        for(CalendarEvent event : EventManager.events) {
+            HBox eventBox = createCalendarEventBox(event);
+            eventsbox.getChildren().add(eventBox);
+        }
+    }
 
+    private HBox createCalendarEventBox(CalendarEvent calendarEvent) {
+        HBox container = new HBox();
+        container.setCursor(Cursor.HAND);
+        String bgColor = "";
+        switch (calendarEvent.getType()) {
+            case EVENT -> bgColor = "rgb(121,134,203)";
+            case TASK -> bgColor = "rgb(66, 133, 244)";
+            case REMINDER -> bgColor = "rgb(142,36,170)";
+            default -> bgColor = "BLACK";
+        }
+        container.setStyle("-fx-background-color: " + bgColor + "; -fx-background-radius: 6;");
+        container.setPadding(new Insets(0, 5, 0, 5));
+
+        Label titleLabel = new Label();
+        titleLabel.setMinWidth(145);
+        titleLabel.setMaxWidth(145);
+        titleLabel.setText(calendarEvent.getTitle());
+        titleLabel.setTextFill(Color.WHITE);
+        titleLabel.setStyle("-fx-font-size: 18");
+
+        HBox dateContainer = new HBox();
+        dateContainer.setAlignment(Pos.CENTER_RIGHT);
+        dateContainer.setPrefWidth(200);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MM dd.", new Locale("hu", "HU"));
+        Label dateLabel = new Label(calendarEvent.getDate().format(formatter));
+        dateLabel.setTextFill(Color.WHITE);
+        dateLabel.setStyle("-fx-font-size: 14");
+
+        dateContainer.getChildren().add(dateLabel);
+
+        container.setOnMouseClicked(event -> {
+            Parent parent = PageManager.loadFxml("event-modify-view", param -> new EventModifyViewController(calendarEvent, "monthly"));
+            PageManager.switchPage(parent);
+        });
+
+        container.getChildren().add(titleLabel);
+        container.getChildren().add(dateContainer);
+        return container;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if(mainViewController == null) {
+            mainViewController = this;
+        }
         PageManager.setMainViewController(this);
+
+        for(CalendarEventType type : CalendarEventType.values()) {
+            typeCmb.getItems().add(type.getDisplayValue());
+        }
+        typeCmb.setValue(CalendarEventType.EVENT.getDisplayValue());
     }
 }

@@ -3,15 +3,18 @@ package io.blackjesus.calendario.models;
 import io.blackjesus.calendario.enums.CalendarEventType;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class CalendarEvent {
 
+    private String uuid;
     private String title;
     private LocalDate date;
     private CalendarEventType type;
     private boolean isCompleted;
 
     public CalendarEvent(String title, LocalDate date, CalendarEventType type, boolean isCompleted) {
+        this.uuid = UUID.randomUUID().toString();
         this.type = type;
         this.date = date;
         this.isCompleted = isCompleted;
@@ -26,6 +29,10 @@ public class CalendarEvent {
                 ", type=" + type +
                 ", isCompleted=" + isCompleted +
                 '}';
+    }
+
+    public String getUuid() {
+        return uuid;
     }
 
     public String getTitle() {

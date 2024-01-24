@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.WeeklyViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="664.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.WeeklyViewController">
 <children>
    <VBox alignment="CENTER">
       <children>
          <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="664.0">
             <children>
-               <Button mnemonicParsing="false" text="&lt;">
+               <Button mnemonicParsing="false" onAction="#openMonthlyViewButton" text="&lt;">
                   <HBox.margin>
                      <Insets left="10.0" />
                   </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                </Button>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Január">
+               <Text fx:id="currentDateMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="Január">
                   <font>
                      <Font size="18.0" />
                   </font>
@@ -26,10 +30,13 @@
                </Text>
             </children>
          </HBox>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <Button mnemonicParsing="false" onAction="#nowButton" text="Most">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="664.0">
             <children>
-               <Button mnemonicParsing="false" text="&lt;" />
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2024. január 23" textAlignment="CENTER">
+               <Text fx:id="currentDate" strokeType="OUTSIDE" strokeWidth="0.0" text="2024. január 23" textAlignment="CENTER">
                   <font>
                      <Font size="21.0" />
                   </font>
@@ -37,10 +44,21 @@
                      <Insets left="15.0" right="15.0" />
                   </HBox.margin>
                </Text>
-               <Button mnemonicParsing="false" text="&gt;" />
             </children>
          </HBox>
-         <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="155.0" prefWidth="664.0" style="-fx-alignment: center;">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="664.0" spacing="15.0">
+               <children>
+               <Button mnemonicParsing="false" onAction="#prevWeek" text="&lt;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#nextWeek" text="&gt;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </HBox>
+         <GridPane fx:id="weeklyViewGrid" alignment="CENTER" gridLinesVisible="true" prefHeight="455.0" prefWidth="664.0" style="-fx-alignment: center;">
             <columnConstraints>
                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -53,6 +71,7 @@
             <rowConstraints>
                <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="53.0" valignment="CENTER" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="109.0" minHeight="0.0" prefHeight="102.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="109.0" minHeight="10.0" percentHeight="70.0" prefHeight="102.0" valignment="CENTER" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hétfő" textAlignment="CENTER">
@@ -125,6 +144,13 @@
                      <Font size="33.0" />
                   </font>
                </Text>
+                  <VBox fx:id="columnBox1" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
+                  <VBox fx:id="columnBox2" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <VBox fx:id="columnBox3" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <VBox fx:id="columnBox4" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <VBox fx:id="columnBox5" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <VBox fx:id="columnBox6" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <VBox fx:id="columnBox7" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
             </children>
          </GridPane>
       </children>

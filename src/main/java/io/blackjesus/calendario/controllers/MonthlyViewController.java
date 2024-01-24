@@ -37,7 +37,7 @@ public class MonthlyViewController implements Initializable {
      * currentYear változónak setter metódusa, az év nem lehet korábbi 2000-nél és későbbi 20 évvel későbbel
      * @param year
      */
-    private void setCurrentYear(int year) {
+    public void setCurrentYear(int year) {
         if(year < 2000 || year > LocalDate.now().getYear() + 20) {
             return;
         }
@@ -50,7 +50,7 @@ public class MonthlyViewController implements Initializable {
      * currentMonth változónak a setter metódusa, a hónap nem lehet kisebb 1-nél valamint nagyobb 12-nél
      * @param month
      */
-    private void setCurrentMonth(int month) {
+    public void setCurrentMonth(int month) {
         if(month < 1) {
             //Előző évre lépés
             setCurrentYear(currentYear - 1);
