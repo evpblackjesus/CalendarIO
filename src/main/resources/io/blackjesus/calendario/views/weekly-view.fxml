@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.WeeklyViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.blackjesus.calendario.controllers.WeeklyViewController">
 <children>
    <VBox alignment="CENTER">
       <children>
          <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="664.0">
             <children>
-               <Button mnemonicParsing="false" text="&lt;">
+               <Button mnemonicParsing="false" onAction="#openMonthlyViewButton" text="&lt;">
                   <HBox.margin>
                      <Insets left="10.0" />
                   </HBox.margin>
                </Button>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Január">
+               <Text fx:id="currentDateMonth" strokeType="OUTSIDE" strokeWidth="0.0" text="Január">
                   <font>
                      <Font size="18.0" />
                   </font>
@@ -26,10 +32,10 @@
                </Text>
             </children>
          </HBox>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <Button mnemonicParsing="false" onAction="#nowButton" text="Most" />
+         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="664.0">
             <children>
-               <Button mnemonicParsing="false" text="&lt;" />
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2024. január 23" textAlignment="CENTER">
+               <Text fx:id="currentDate" strokeType="OUTSIDE" strokeWidth="0.0" text="2024. január 23" textAlignment="CENTER">
                   <font>
                      <Font size="21.0" />
                   </font>
@@ -37,10 +43,15 @@
                      <Insets left="15.0" right="15.0" />
                   </HBox.margin>
                </Text>
-               <Button mnemonicParsing="false" text="&gt;" />
             </children>
          </HBox>
-         <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="155.0" prefWidth="664.0" style="-fx-alignment: center;">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="664.0" spacing="15.0">
+               <children>
+               <Button mnemonicParsing="false" onAction="#prevWeek" text="&lt;" />
+               <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#nextWeek" text="&gt;" />
+               </children>
+            </HBox>
+         <GridPane fx:id="weeklyViewGrid" alignment="CENTER" gridLinesVisible="true" prefHeight="155.0" prefWidth="664.0" style="-fx-alignment: center;">
             <columnConstraints>
                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
