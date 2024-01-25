@@ -3,6 +3,7 @@ package io.blackjesus.calendario.managers;
 import io.blackjesus.calendario.controllers.DailyViewController;
 import io.blackjesus.calendario.controllers.MainViewController;
 import io.blackjesus.calendario.controllers.MonthlyViewController;
+import io.blackjesus.calendario.controllers.WeeklyViewController;
 import io.blackjesus.calendario.enums.CalendarEventType;
 import io.blackjesus.calendario.models.CalendarEvent;
 
@@ -32,7 +33,7 @@ public class EventManager {
         events.sort(Comparator.comparing(CalendarEvent::getDate));
         MonthlyViewController.getInstance().updateCalendar();
         DailyViewController.getInstance().setDate(calendarEvent.getDate());
-
+        WeeklyViewController.getInstance().updateEventList();
     }
 
     public static List<CalendarEvent> getEventsOnDate(LocalDate date) {
@@ -59,6 +60,7 @@ public class EventManager {
         if(removedEventDate != null) {
             MonthlyViewController.getInstance().updateCalendar();
             DailyViewController.getInstance().setDate(removedEventDate);
+            WeeklyViewController.getInstance().updateEventList();
         }
     }
 }

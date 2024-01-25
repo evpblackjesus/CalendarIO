@@ -27,6 +27,11 @@ import java.util.ResourceBundle;
 
 public class WeeklyViewController implements Initializable {
 
+    private static WeeklyViewController weeklyViewController;
+
+    public static WeeklyViewController getInstance() {
+        return weeklyViewController;
+    }
 
     private LocalDate localDate;
 
@@ -40,8 +45,8 @@ public class WeeklyViewController implements Initializable {
             daysOfWeek(localDate);
             updateWeeklyView();
             currentDateUpdate(startDate, endDate);
-            addEventToDate(daysOfWeek(localDate),columnBoxes);
-
+            // addEventToDate(daysOfWeek(localDate), columnBoxes);
+            updateEventList();
         }
     }
 
@@ -55,8 +60,8 @@ public class WeeklyViewController implements Initializable {
             daysOfWeek(localDate);
             updateWeeklyView();
             currentDateUpdate(startDate, endDate);
-            addEventToDate(daysOfWeek(localDate),columnBoxes);
-
+            // addEventToDate(daysOfWeek(localDate), columnBoxes);
+            updateEventList();
         }
     }
 
@@ -88,9 +93,6 @@ public class WeeklyViewController implements Initializable {
     private VBox columnBox1, columnBox2, columnBox3, columnBox4, columnBox5, columnBox6, columnBox7;
     private List<VBox> columnBoxes;
 
-
-
-
     /**
      * Beírja a Grid-be a megfelelő napokat
      */
@@ -112,14 +114,11 @@ public class WeeklyViewController implements Initializable {
         }
     }
 
-
-
     /**
      * Visszaadja az adott héten található napok listáját
      */
     public static List<LocalDate> daysOfWeek(LocalDate date) {
         List<LocalDate> currentDaysList = new ArrayList<>();
-
 
         // Hétfőtől vasárnapig (1-től 7-ig)
         for (int i = 1; i <= 7; i++) {
@@ -133,42 +132,43 @@ public class WeeklyViewController implements Initializable {
     }
 
     /**
-     *
      * A megjelenő hét napjainak megfelelő eseményeket megjeleníti a megfelelő napok alatt
      */
-
-    public void addEventToDate (List<LocalDate> currentDaysList, List<VBox> columnBoxes) {
-    for (int i = 0; i < currentDaysList.size(); i++) {
-        columnBoxes.get(i).getChildren().clear();
-        //Eventek hozzáadása
-        List<CalendarEvent> events = EventManager.getEventsOnDate(currentDaysList.get(i));
-        if (!events.isEmpty()) {
-            for (CalendarEvent event : events) {
-                HBox eventContainer = createCalendarEventBox(event);
-                System.out.printf(columnBoxes.get(i).toString());
-                columnBoxes.get(i).getChildren().add(eventContainer);
+    public void addEventToDate(List<LocalDate> currentDaysList, List<VBox> columnBoxes) {
+        for (int i = 0; i < currentDaysList.size(); i++) {
+            columnBoxes.get(i).getChildren().clear();
+            //Eventek hozzáadása
+            List<CalendarEvent> events = EventManager.getEventsOnDate(currentDaysList.get(i));
+            if (!events.isEmpty()) {
+                for (CalendarEvent event : events) {
+                    HBox eventContainer = createCalendarEventBox(event);
+                    System.out.printf(columnBoxes.get(i).toString());
+                    columnBoxes.get(i).getChildren().add(eventContainer);
+                }
             }
         }
-    }
     }
 
     /**
      * Ezt nem használtam de frissítené az eventeket
      */
     public void updateEventList() {
+        List<LocalDate> weekDays = daysOfWeek(startDate);
         for (int i = 0; i < columnBoxes.size(); i++) {
             columnBoxes.get(i).getChildren().clear();
-            for(CalendarEvent event : EventManager.events) {
-                HBox eventBox = createCalendarEventBox(event);
-                columnBoxes.get(i).getChildren().add(eventBox);
+            LocalDate day = weekDays.get(i);
+            List<CalendarEvent> events = EventManager.getEventsOnDate(day);
+            if (!events.isEmpty()) {
+                for (CalendarEvent event : events) {
+                    HBox eventContainer = createCalendarEventBox(event);
+                    columnBoxes.get(i).getChildren().add(eventContainer);
+                }
             }
         }
-
     }
 
 
     /**
-     *
      * Létrehozza az eventboxot
      */
     private static HBox createCalendarEventBox(CalendarEvent calendarEvent) {
@@ -207,7 +207,8 @@ public class WeeklyViewController implements Initializable {
         daysOfWeek(date);
         updateWeeklyView();
         currentDateUpdate(startDate, endDate);
-        addEventToDate(daysOfWeek(date),columnBoxes);
+        // addEventToDate(daysOfWeek(date), columnBoxes);
+        updateEventList();
     }
 
     /**
@@ -247,7 +248,9 @@ public class WeeklyViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        if (weeklyViewController == null) {
+            weeklyViewController = this;
+        }
         columnBoxes = Arrays.asList(columnBox1, columnBox2, columnBox3, columnBox4, columnBox5, columnBox6, columnBox7);
         start(LocalDate.now());
         updateWeeklyView();
