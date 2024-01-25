@@ -1,15 +1,16 @@
 package io.blackjesus.calendario.controllers;
 
-import io.blackjesus.calendario.managers.PageManager;
-import io.blackjesus.calendario.models.CalendarEvent;
 import io.blackjesus.calendario.enums.CalendarEventType;
 import io.blackjesus.calendario.managers.EventManager;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import io.blackjesus.calendario.managers.PageManager;
+import io.blackjesus.calendario.models.CalendarEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ public class EventModifyViewController implements Initializable {
     private CalendarEvent event;
     private String pageName;
     private Node page;
+
     public EventModifyViewController(CalendarEvent event, String pageName) {
         this.event = event;
         this.pageName = pageName;
@@ -40,7 +42,6 @@ public class EventModifyViewController implements Initializable {
     @FXML
     private CheckBox completedChb;
 
-
     @FXML
     public void saveEvent() {
         event.setTitle(eventTitle.getText());
@@ -48,7 +49,7 @@ public class EventModifyViewController implements Initializable {
         event.setCompleted(completedChb.isSelected());
         event.setType(CalendarEventType.getEventType(typeCmb.getValue()));
 
-        if (event.isCompleted()){
+        if (event.isCompleted()) {
             EventManager.removeEvent(event.getUuid());
         }
 
@@ -67,7 +68,7 @@ public class EventModifyViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for(CalendarEventType type : CalendarEventType.values()) {
+        for (CalendarEventType type : CalendarEventType.values()) {
             typeCmb.getItems().add(type.getDisplayValue());
         }
         typeCmb.setValue(event.getType().getDisplayValue());

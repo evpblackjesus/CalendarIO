@@ -1,5 +1,7 @@
 package io.blackjesus.calendario;
 
+import io.blackjesus.calendario.managers.EventManager;
+import io.blackjesus.calendario.managers.FileManager;
 import io.blackjesus.calendario.managers.PageManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,8 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        FileManager.createDataFolder();
+        EventManager.events.addAll(FileManager.loadEvents());
         launch();
     }
 }

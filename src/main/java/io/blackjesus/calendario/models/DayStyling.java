@@ -5,7 +5,8 @@ import javafx.scene.layout.BorderWidths;
 public class DayStyling {
     private boolean isTopRow, isFirstColumn, isLastColumn, isBottomRow, isToday;
 
-    public DayStyling() {}
+    public DayStyling() {
+    }
 
     public DayStyling(boolean isTopRow, boolean isFirstColumn, boolean isLastColumn, boolean isBottomRow) {
         this.isTopRow = isTopRow;

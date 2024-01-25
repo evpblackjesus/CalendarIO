@@ -171,16 +171,10 @@ public class WeeklyViewController implements Initializable {
     /**
      * Létrehozza az eventboxot
      */
-    private static HBox createCalendarEventBox(CalendarEvent calendarEvent) {
+    private HBox createCalendarEventBox(CalendarEvent calendarEvent) {
         HBox container = new HBox();
         container.setCursor(Cursor.HAND);
-        String bgColor = "";
-        switch (calendarEvent.getType()) {
-            case EVENT -> bgColor = "rgb(121,134,203)";
-            case TASK -> bgColor = "rgb(66, 133, 244)";
-            case REMINDER -> bgColor = "rgb(142,36,170)";
-            default -> bgColor = "BLACK";
-        }
+        String bgColor = calendarEvent.getEventColor();
         container.setPadding(new Insets(5, 10, 5, 10));
 
         container.setStyle("-fx-background-color: " + bgColor + "; -fx-background-radius: 15;");

@@ -14,13 +14,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Calendario-effective-pom.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -36,9 +40,18 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalendarEventTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalendarEventTypeTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DayStylingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DummyClassTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PageManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.io.blackjesus.calendario.test in Calendario.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -54,8 +67,14 @@
       <recent name="C:\Users\Thurneer\Documents\GitHub\Calendario\src\main\resources\io\blackjesus\calendario\views" />
       <recent name="C:\Users\Thurneer\Documents\GitHub\Calendario\src\main\resources\io\blackjesus\calendario\calendario\views" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="io.blackjesus.calendario.test" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.blackjesus.calendario.HelloApplication" />
       <module name="Calendario" />
@@ -65,6 +84,66 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalendarEventTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Calendario" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.blackjesus.calendario.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.blackjesus.calendario.test" />
+      <option name="MAIN_CLASS_NAME" value="io.blackjesus.calendario.test.CalendarEventTypeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DummyClassTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Calendario" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.blackjesus.calendario.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.blackjesus.calendario.test" />
+      <option name="MAIN_CLASS_NAME" value="io.blackjesus.calendario.test.DummyClassTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Calendario" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.blackjesus.calendario.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.blackjesus.calendario.test" />
+      <option name="MAIN_CLASS_NAME" value="io.blackjesus.calendario.test.EventManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PageManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Calendario" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.blackjesus.calendario.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.blackjesus.calendario.test" />
+      <option name="MAIN_CLASS_NAME" value="io.blackjesus.calendario.test.PageManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -85,6 +164,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.DummyClassTest" />
+        <item itemvalue="JUnit.CalendarEventTypeTest" />
+        <item itemvalue="JUnit.PageManagerTest" />
+        <item itemvalue="JUnit.EventManagerTest" />
       </list>
     </recent_temporary>
   </component>

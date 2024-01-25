@@ -1,7 +1,6 @@
 package io.blackjesus.calendario.managers;
 
 import io.blackjesus.calendario.HelloApplication;
-import io.blackjesus.calendario.controllers.DayController;
 import io.blackjesus.calendario.controllers.MainViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.util.Callback;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.HashMap;
 
 public class PageManager {
@@ -20,20 +18,14 @@ public class PageManager {
     }
 
     public static void switchPage(String pageName) {
-        if(mainViewController != null) {
+        if (mainViewController != null) {
             mainViewController.switchContent(pages.get(pageName));
         }
     }
 
     public static void switchPage(Node node) {
-        if(mainViewController != null) {
+        if (mainViewController != null) {
             mainViewController.switchContent(node);
-        }
-    }
-
-    public static void setDatePickerDate (LocalDate date){
-        if(mainViewController != null) {
-            mainViewController.datepicker.setValue(date);
         }
     }
 
@@ -57,13 +49,14 @@ public class PageManager {
 
     /**
      * Betölti a paraméterben megadott FXML fájlt a view mappából
+     *
      * @param viewFileName
      * @return Parent típusként tér vissza
      */
     @SafeVarargs
     public static Parent loadFxml(String viewFileName, Callback<Class<?>, Object>... controllerFactory) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/" + viewFileName + ".fxml"));
-        if(controllerFactory.length > 0) {
+        if (controllerFactory.length > 0) {
             fxmlLoader.setControllerFactory(controllerFactory[0]);
         }
         try {

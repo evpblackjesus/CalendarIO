@@ -1,34 +1,28 @@
 package io.blackjesus.calendario.controllers;
 
 import io.blackjesus.calendario.enums.CalendarEventType;
-import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.managers.EventManager;
+import io.blackjesus.calendario.managers.PageManager;
 import io.blackjesus.calendario.models.CalendarEvent;
-import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 
-import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -103,7 +97,7 @@ public class MainViewController implements Initializable {
 
     public void updateEventList() {
         eventsbox.getChildren().clear();
-        for(CalendarEvent event : EventManager.events) {
+        for (CalendarEvent event : EventManager.events) {
             HBox eventBox = createCalendarEventBox(event);
             eventsbox.getChildren().add(eventBox);
         }
@@ -112,13 +106,7 @@ public class MainViewController implements Initializable {
     private HBox createCalendarEventBox(CalendarEvent calendarEvent) {
         HBox container = new HBox();
         container.setCursor(Cursor.HAND);
-        String bgColor = "";
-        switch (calendarEvent.getType()) {
-            case EVENT -> bgColor = "rgb(121,134,203)";
-            case TASK -> bgColor = "rgb(66, 133, 244)";
-            case REMINDER -> bgColor = "rgb(142,36,170)";
-            default -> bgColor = "BLACK";
-        }
+        String bgColor = calendarEvent.getEventColor();
         container.setStyle("-fx-background-color: " + bgColor + "; -fx-background-radius: 6;");
         container.setPadding(new Insets(0, 5, 0, 5));
 
@@ -152,14 +140,16 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(mainViewController == null) {
+        if (mainViewController == null) {
             mainViewController = this;
         }
         PageManager.setMainViewController(this);
 
-        for(CalendarEventType type : CalendarEventType.values()) {
+        for (CalendarEventType type : CalendarEventType.values()) {
             typeCmb.getItems().add(type.getDisplayValue());
         }
         typeCmb.setValue(CalendarEventType.EVENT.getDisplayValue());
+
+        updateEventList();
     }
 }
